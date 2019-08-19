@@ -1,6 +1,14 @@
 const express = require("express");
 const app = express();
 app.use(express.json());
+app.use("/api", (req, res, next) => {
+  console.log(
+    `${req.method} Request on ${req.protocol}://${req.host}:${port}${
+      req.originalUrl
+    }`
+  );
+  next();
+});
 
 const employees = [
   { id: 1, name: "employee1" },
